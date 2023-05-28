@@ -4,7 +4,7 @@
 
 `r := []rune(s)`:
 
-```
+```go
 Running tool: /opt/homebrew/bin/go test -benchmem -run=^$ -coverprofile=/var/folders/dt/b_yjx19j56lb07m0hnmx1zz80000gn/T/vscode-goibiU0i/go-code-cover -bench . github.com/cdfmlr/ellipsis
 
 goos: darwin
@@ -45,7 +45,7 @@ ok  	github.com/cdfmlr/ellipsis	472.310s
 
 `cutString`:
 
-```
+```go
 Running tool: /opt/homebrew/bin/go test -benchmem -run=^$ -coverprofile=/var/folders/dt/b_yjx19j56lb07m0hnmx1zz80000gn/T/vscode-goibiU0i/go-code-cover -bench . github.com/cdfmlr/ellipsis
 
 goos: darwin
@@ -83,4 +83,45 @@ PASS
 	github.com/cdfmlr/ellipsis	coverage: 89.4% of statements
 ok  	github.com/cdfmlr/ellipsis	644.004s
 
+```
+
+`runes[i] = char`:
+
+```go
+Running tool: /opt/homebrew/bin/go test -benchmem -run=^$ -coverprofile=/var/folders/dt/b_yjx19j56lb07m0hnmx1zz80000gn/T/vscode-goibiU0i/go-code-cover -bench . github.com/cdfmlr/ellipsis
+
+goos: darwin
+goarch: arm64
+pkg: github.com/cdfmlr/ellipsis
+BenchmarkEllipsisCentering0-8         	540390734	         1.916 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEllipsisCentering1-8         	621857242	         1.932 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEllipsisCentering10-8        	627413390	         1.914 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEllipsisCentering30-8        	10521423	       117.0 ns/op	      72 B/op	       6 allocs/op
+BenchmarkEllipsisCentering100-8       	 9447420	       123.8 ns/op	      72 B/op	       6 allocs/op
+BenchmarkEllipsisCentering1000-8      	10249033	       113.7 ns/op	      72 B/op	       6 allocs/op
+BenchmarkEllipsisCentering1000000-8   	10483939	       114.0 ns/op	      72 B/op	       6 allocs/op
+BenchmarkEllipsisStarting0-8          	626774361	         1.917 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEllipsisStarting1-8          	626343758	         1.915 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEllipsisStarting10-8         	627081016	         1.917 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEllipsisStarting30-8         	11962456	       100.4 ns/op	      72 B/op	       4 allocs/op
+BenchmarkEllipsisStarting100-8        	11953460	       100.5 ns/op	      72 B/op	       4 allocs/op
+BenchmarkEllipsisStarting1000-8       	11955484	       100.4 ns/op	      72 B/op	       4 allocs/op
+BenchmarkEllipsisStarting1000000-8    	11798694	       101.2 ns/op	      72 B/op	       4 allocs/op
+BenchmarkEllipsisEnding0-8            	625710849	         1.915 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEllipsisEnding1-8            	626564917	         1.915 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEllipsisEnding10-8           	626310387	         1.917 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEllipsisEnding30-8           	11714025	       102.1 ns/op	      72 B/op	       4 allocs/op
+BenchmarkEllipsisEnding100-8          	11752506	       102.1 ns/op	      72 B/op	       4 allocs/op
+BenchmarkEllipsisEnding1000-8         	11753288	       102.1 ns/op	      72 B/op	       4 allocs/op
+BenchmarkEllipsisEnding1000000-8      	11672947	       102.6 ns/op	      72 B/op	       4 allocs/op
+BenchmarkNoEllipsis0-8                	962382211	         1.259 ns/op	       0 B/op	       0 allocs/op
+BenchmarkNoEllipsis1-8                	953363317	         1.256 ns/op	       0 B/op	       0 allocs/op
+BenchmarkNoEllipsis10-8               	955995655	         1.260 ns/op	       0 B/op	       0 allocs/op
+BenchmarkNoEllipsis30-8               	957052911	         1.253 ns/op	       0 B/op	       0 allocs/op
+BenchmarkNoEllipsis100-8              	949933554	         1.259 ns/op	       0 B/op	       0 allocs/op
+BenchmarkNoEllipsis1000-8             	955583925	         1.258 ns/op	       0 B/op	       0 allocs/op
+BenchmarkNoEllipsis1000000-8          	945737022	         1.255 ns/op	       0 B/op	       0 allocs/op
+PASS
+	github.com/cdfmlr/ellipsis	coverage: 89.4% of statements
+ok  	github.com/cdfmlr/ellipsis	643.521s
 ```

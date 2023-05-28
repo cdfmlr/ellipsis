@@ -47,7 +47,8 @@ func cutString(s string, n int, leftToRight cutDirection) string {
 		return s
 	}
 
-	var ss string
+	// var runes = make([]rune, 0, n)
+	var runes = make([]rune, n)
 
 	var idx int = 0
 	if !leftToRight {
@@ -57,16 +58,18 @@ func cutString(s string, n int, leftToRight cutDirection) string {
 	for i := 0; i < n; i++ {
 		if leftToRight {
 			char, size := utf8.DecodeRuneInString(s[idx:])
-			ss = ss + string(char)
+			// runes = append(runes, char)
+			runes[i] = char
 			idx += size
 		} else {
 			char, size := utf8.DecodeLastRuneInString(s[:idx])
-			ss = string(char) + ss
+			// runes = append([]rune{char}, runes...)
+			runes[n-i-1] = char
 			idx -= size
 		}
 	}
 
-	return ss
+	return string(runes)
 }
 
 // Starting ellipsis a long string s -> "...end"
