@@ -3,7 +3,6 @@ package ellipsis
 
 import (
 	"strings"
-	"unicode/utf8"
 )
 
 // EllipsisFunc is a function type for Centering, Starting and Ending
@@ -30,6 +29,8 @@ func Centering(s string, n int) string {
 	return sb.String()
 }
 
+const utf8CharMaxSize = 4
+
 type cutDirection bool
 
 const (
@@ -47,25 +48,21 @@ func cutString(s string, n int, leftToRight cutDirection) string {
 		return s
 	}
 
-	// var runes = make([]rune, 0, n)
-	var runes = make([]rune, n)
-
-	var idx int = 0
-	if !leftToRight {
-		idx = len(s)
+	maxLen := n * utf8CharMaxSize
+	if maxLen >= len(s) {
+		maxLen = len(s)
 	}
 
-	for i := 0; i < n; i++ {
-		if leftToRight {
-			char, size := utf8.DecodeRuneInString(s[idx:])
-			// runes = append(runes, char)
-			runes[i] = char
-			idx += size
-		} else {
-			char, size := utf8.DecodeLastRuneInString(s[:idx])
-			// runes = append([]rune{char}, runes...)
-			runes[n-i-1] = char
-			idx -= size
+	var runes []rune
+	if leftToRight {
+		runes = []rune(s[:maxLen])
+		if len(runes) > n {
+			runes = runes[:n]
+		}
+	} else {
+		runes = []rune(s[len(s)-maxLen:])
+		if len(runes) > n {
+			runes = runes[len(runes)-n:]
 		}
 	}
 
