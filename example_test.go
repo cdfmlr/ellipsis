@@ -6,22 +6,22 @@ import (
 
 func ExampleCentering() {
 	// Centering ellipsis a long string s -> "begin...end"
-	s := Centering("1234567890", 7)
+	s := Centering("0123456789零一二三四五六七八九", 7)
 	fmt.Println(s)
-	// Output: 12...90
+	// Output: 01...八九
 }
 
 func ExampleStarting() {
 	// Starting ellipsis a long string s -> "...end"
-	s := Starting("1234567890", 7)
+	s := Starting("0123456789零一二三四五六七八九", 7)
 	fmt.Println(s)
-	// Output: ...7890
+	// Output: ...六七八九
 }
 
 func ExampleEnding() {
 	// Ending ellipsis a long string s -> "begin..."
-	s := Ending("1234567890", 7)
+	s := Ending("0123456789零一二三四五六七八九", 7)
 	fmt.Println(s)
-	// Output: 1234...
+	// Output: 0123...
 }
 

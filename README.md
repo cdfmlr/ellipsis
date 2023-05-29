@@ -1,4 +1,77 @@
-# ellipsis
+# Truncate UTF-8 string with ellipsis
+
+Ellipsis is a Go package that provides functions to truncate long string with ellipsis while being aware of UTF-8 characters, but not spaces. This package offers three main functions to ellipsis a long string: Centering, Starting, and Ending. The functions are aware of UTF-8 characters and will not cut them in half.
+
+## Installation
+
+To use Ellipsis, you need to install Go and set your go mod first. After that, you can get the package by executing the following command:
+
+```bash
+go get github.com/cdfmlr/ellipsis
+```
+
+## Usage
+
+The package provides three functions that you can use to ellipsis a long string:
+
+### Centering
+
+Centering ellipsis a long string s -> "front...end".
+
+```go
+func Centering(s string, n int) string
+```
+
+This function takes two arguments: the long string `s` and the maximum length `n` of the ellipsed string. It returns the ellipsed string with the middle part of `s` replaced by "..." to fit into the maximum length.
+
+### Starting
+
+Starting ellipsis a long string s -> "...end".
+
+```go
+func Starting(s string, n int) string
+```
+
+This function takes two arguments: the long string `s` and the maximum length `n` of the ellipsed string. It returns the ellipsed string with the beginning of `s` replaced by "..." to fit into the maximum length.
+
+### Ending
+
+Ending ellipsis a long string s -> "front...".
+
+```go
+func Ending(s string, n int) string
+``This function takes two arguments: the long string `s` and the maximum length `n` of the ellipsed string. It returns the ellipsed string with the end of `s` replaced by "..." to fit into the maximum length.
+
+## Examples
+
+Here are some examples of how to use Ellipsis:
+
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/cdfmlr/ellipsis"
+)
+
+func main() {
+	s := "0123456789零一二三四五六七八九"
+
+	fmt.Println(Centering(s, 7)) //01...八九
+
+	fmt.Println(Starting(s, 7)) // ...六七八九
+
+	fmt.Println(Ending(s, 7)) // 0123...
+}
+```
+
+## Contributing
+
+If you find any issues with Ellipsis or have any feature requests, please feel free to submit an issue or a pull request on the project's GitHub page.
+
+## License
+
+Ellipsis is released under the MIT License. See the LICENSE file for details.
 
 ## Benchmark
 
