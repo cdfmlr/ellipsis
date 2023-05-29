@@ -246,7 +246,7 @@ func FuzzTest(f *testing.F) {
 	}
 
 	f.Fuzz(func(t *testing.T, s string, n int) {
-		for _, ellipsisFunc := range []EllipsisFunc{
+		for _, ellipsisFunc := range []ellipsisFunc{
 			Centering, Starting, Ending,
 		} {
 			got := ellipsisFunc(s, n)

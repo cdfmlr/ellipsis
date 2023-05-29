@@ -50,7 +50,7 @@ func Test_stringWithLength(t *testing.T) {
 	}
 }
 
-func benchmarkEllipsisFunc(b *testing.B, f EllipsisFunc, s string, n int) {
+func benchmarkEllipsisFunc(b *testing.B, f ellipsisFunc, s string, n int) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		f(s, n)

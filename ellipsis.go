@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-// EllipsisFunc is a function type for Centering, Starting and Ending
-type EllipsisFunc func(string, int) string
+// ellipsisFunc is a function type for Centering, Starting and Ending
+type ellipsisFunc func(string, int) string
 
 // Centering ellipsis a long string s -> "front...end"
 func Centering(s string, n int) string {
